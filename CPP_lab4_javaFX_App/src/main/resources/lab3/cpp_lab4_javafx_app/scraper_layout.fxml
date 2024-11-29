@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22.0.1" fx:controller="lab3.cpp_lab4_javafx_app.ScraperController">
+    <!-- Таблиця ліворуч -->
+    <left>
+        <VBox spacing="10" prefWidth="300">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <Label text="URLs to scrape" />
+            <TableView fx:id="urlTable" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="urlColumn" text="Added URLs" prefWidth="280"/>
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <TextField fx:id="urlField" promptText="Enter URL" />
+                <Button text="Add URL" onAction="#onAddUrl" />
+            </HBox>
+        </VBox>
+    </left>
+
+    <!-- Панелі потоків у центрі -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <VBox fx:id="threadPanelContainer" spacing="10">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Label text="Thread Status Panel" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Панель керування та статистика внизу -->
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <!-- Поле введення потоків -->
+            <HBox spacing="10">
+                <Label text="Threads:" />
+                <TextField fx:id="threadField" text="5" promptText="Number of Threads" />
+                <Button text="Start" onAction="#onStartScraping" />
+                <Button text="Stop" onAction="#onStopScraping" />
+            </HBox>
+
+            <!-- Головний статус -->
+            <Label fx:id="mainThreadStatusLabel" text="Main Thread Status: Waiting" style="-fx-font-size: 12; -fx-font-style: italic;" />
+
+            <!-- Час виконання -->
+            <HBox spacing="10">
+                <Label text="Total Execution Time:" />
+                <Label fx:id="totalTimeLabel" text="0 ms" style="-fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
